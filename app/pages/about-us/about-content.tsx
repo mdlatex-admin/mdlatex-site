@@ -1,0 +1,50 @@
+"use client";
+import {useRef} from "react";
+
+const stats=[
+ ["100k+","Nights Protected","Restful hours provided to sleeping homes nationwide."],
+ ["100%","Pure Botanical","Zero cheap synthetic foam oil derivatives filler."],
+ ["10+ Year","Core Resilience","Guaranteed height recovery benchmark integrity."],
+ ["0%","Toxin Emission","Completely certified free of formaldehydes."]
+];
+const awards=[
+ ["2016","Best Natural Latex Product","Recognized globally for excellence in high-integrity, sustainable natural botanical rubber manufacturing frameworks.","/images/md_latex_about_award_2016.webp"],
+ ["2017","Industry Innovation Award","Honored for pioneering clean, zero-emission processing setups and advanced botanical foam structural compositions.","/images/md_latex_about_award_2017.webp"],
+ ["2019","Quality Excellence Award","Awarded to our manufacturing line for maintaining pure raw latex core compositions and exceptional density performance benchmarks.","/images/md_latex_about_award_2019.webp"]
+];
+const process=[
+ ["Step 01","Sunrise Sap Harvesting","Before the tropical sun warms the estates, raw organic liquid latex is tapped drop-by-drop from mature rubber trees. Collecting the sap at dawn keeps it in its purest, most stable fluid state before processing begins.","/images/md_latex_about_process_harvesting.webp","MD Latex Sunrise Tapping Stage"],
+ ["Step 02","Advanced Pinhole Vulcanization","The raw botanical serum is whipped into a rich foam matrix and baked inside specialized biconical steel molds. This process sets our signature open-cell micro-pinholes, ensuring built-in, continuous breathability.","/images/md_latex_about_process_vulcanization.webp","MD Latex Advanced Mold Vulcanization Stage"],
+ ["Step 03","Continuous Purity Washing","The solid latex blocks go through multiple stages of continuous fresh-water washing. This removes any lingering natural rubber proteins, yielding an inherently clean, completely odor-free sleep surface.","/images/md_latex_about_process_washing.webp","MD Latex Fresh Water Clean Wash Stage"]
+];
+const milestones=[
+ ["1952","Founded by Mr. Temsit Nithi to manufacture concentrated natural latex configurations."],
+ ["1960","Began producing premium latex products including balloons, toys, and custom medical-grade latex gloves."],
+ ["1963","Strategic pivot to 100% natural latex foam furniture cushions and motorcycle seats due to growing regional market demand."],
+ ["1970","Began high-volume production of 100% natural latex foam mattresses and initiated exporting worldwide."],
+ ["1978","Launched soap-shaped 100% natural latex pillows utilizing specialized functional compound setups."],
+ ["1980","Implemented continuous line processing structures and automated industrial machinery in the core production lines."],
+ ["1982","Collaborated with clinical regional hospitals to design and complete our first ergonomic contour pillow validation."],
+ ["1991","Started specialized production of high-volume latex foam sheets and industrial carpet specifications."],
+ ["1999","Expanded total operations setup into a massive 36,000 square meter factory facility to meet rising international mass demands."],
+ ["2001","Introduced cutting-edge slice machine engineering layers for producing thin organic latex sheets integrated inside hybrid spring setups."],
+ ["2002","Installed micro-precision layout profile edge cutting systems and computerized foaming chambers."],
+ ["2003","Established secondary condensed latex foam processing lines to deliver composite high-density adhesive board plates."],
+ ["2007","Modernized logistics with integrated conveyor loops, reaching an annual output capacity of over 350,000 pillows sold."]
+];
+
+export default function AboutContent(){
+ const timeline=useRef<HTMLDivElement>(null);
+ const move=(direction:number)=>timeline.current?.scrollBy({left:324*direction,behavior:"smooth"});
+ return <main className="mdl-about-page">
+  <section className="mdl-about-hero-unified"><img className="mdl-about-hero-bg-img" src="/images/md_latex_about_hero.webp" alt="MD Latex Facility"/><div className="mdl-about-overlay"><div className="mdl-about-hero-content"><span className="mdl-about-tag">Since Day One</span><h1>Crafting Premium Natural Latex For Better Sleep</h1><p>At MD Latex, we believe sleep shouldn&apos;t be complicated, artificial, or uncomfortable. We cut out toxic synthetic foams and low-grade imports to engineer orthopedically balanced bedding directly from nature&apos;s finest elements.</p></div></div></section>
+  <section className="mdl-about-stats-sec"><div className="mdl-about-stats-wrap">{stats.map((x,i)=><article className={`mdl-stat-metric-card mdl-anim-stat mdl-dly-m${i+1}`} key={x[1]}><strong className="mdl-stat-number">{x[0]}</strong><span className="mdl-stat-label">{x[1]}</span><p className="mdl-stat-subtext">{x[2]}</p></article>)}</div></section>
+  <section className="mdl-awards-grid-sec"><div className="mdl-awards-grid-container"><header className="mdl-awards-grid-header"><h2>Company Milestones &amp; Awards</h2><p>Recognized industry benchmarks for environmental standard validations and structural excellence.</p></header><div className="mdl-awards-columns">{awards.map(x=><article className="mdl-grid-award-card" key={x[0]}><div className="mdl-grid-award-frame"><img src={x[3]} alt={`MD Latex - ${x[1]} Certificate ${x[0]}`} loading="lazy"/></div><div className="mdl-grid-award-info"><span className="mdl-grid-award-year">{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p></div></article>)}</div></div></section>
+  <section className="mdl-about-split-sec"><div className="mdl-about-split-wrap"><div className="mdl-split-story-text"><h2>Sourced Locally. Formulated Internationally.</h2><p>Our journey begins right in the heart of premium Malaysian rubber estates. By harvesting raw organic latex sap locally, we protect the structural elasticity of the material from degrading over long shipping routes before processing.</p><p>This fresh, premium sap is molded using high-end configuration standards. The result is a sleep surface that is fundamentally richer, springier, and significantly more durable than standard options on the market.</p></div><div className="mdl-split-story-img"><img src="/images/md_latex_about_local_sourcing.webp" alt="MD Latex - Authentic Local Sourcing Journey" loading="lazy"/></div></div></section>
+  <section className="mdl-about-split-rev-sec"><div className="mdl-about-split-rev-wrap"><div className="mdl-split-rev-img"><img src="/images/md_latex_about_skeletal_reset.webp" alt="MD Latex Core Technology Matrix Layout" loading="lazy"/></div><div className="mdl-split-rev-text"><h2>The Science of True Skeletal Reset</h2><p>We work alongside spine specialists and chiropractors to understand exactly how the human frame recovering profile behaves at night. Traditional memory foam traps body heat and forces your muscles to sink into fixed, restrictive pockets.</p><p>MD Latex acts entirely differently. It provides an immediate floating counter-lift that completely fills structural spinal gaps, keeping your head, neck, and lower back aligned perfectly in any sleep position.</p></div></div></section>
+  <section className="mdl-about-journey-sec"><div className="mdl-about-journey-wrap"><header className="mdl-journey-header mdl-anim-journey"><h2>Our Pure Manufacturing Process</h2><p>We trace every step of production from raw botanical collection to final packaging to maintain total structural quality control.</p></header>{process.map((x,i)=><article className={`mdl-journey-row-block ${i===1?"flipped":""}`} key={x[0]}><div className="mdl-journey-desc-side mdl-anim-journey"><span className="mdl-step-num">{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p></div><div className="mdl-journey-img-side mdl-anim-journey"><img src={x[3]} alt={x[4]} loading="lazy"/></div></article>)}</div></section>
+  <section className="mdl-hz-timeline-sec"><div className="mdl-hz-timeline-grid"><div className="mdl-hz-timeline-sidebar"><h2>Our Journey &amp; Milestones</h2><p>Over 70 years of pioneering technical innovation, pure material processing development, and world-class organic sleeping designs.</p><div className="mdl-timeline-nav-buttons"><button className="mdl-nav-btn" onClick={()=>move(-1)} aria-label="Scroll timeline left">←</button><button className="mdl-nav-btn" onClick={()=>move(1)} aria-label="Scroll timeline right">→</button></div></div><div className="mdl-hz-timeline-track" ref={timeline}>{milestones.map(x=><article className="mdl-hz-card" key={x[0]}><strong className="mdl-hz-year">{x[0]}</strong><p>{x[1]}</p></article>)}</div></div></section>
+  <section className="mdl-about-pillars-sec"><div className="mdl-about-pillars-box"><h2 className="mdl-anim-pillar">What Guides MD Latex</h2><div className="mdl-pillars-row-grid"><article className="mdl-pillar-card-item mdl-anim-pillar"><span className="mdl-pillar-card-tag">Pillar 01</span><h3>Total Chemical Safety</h3><p>We completely ban toxic polyurethanes, petroleum off-gassing, and harsh fire retardants so your lungs stay fully protected.</p></article><article className="mdl-pillar-card-item mdl-anim-pillar"><span className="mdl-pillar-card-tag">Pillar 02</span><h3>Tropical Breathability</h3><p>Every product is molded with specialized open-cell airflow matrices to continuously vent away muggy humidity and heat.</p></article><article className="mdl-pillar-card-item mdl-anim-pillar"><span className="mdl-pillar-card-tag">Pillar 03</span><h3>Decade-Long Durability</h3><p>We design bedding that maintains its elastic core memory, support profile, and height calibration year after year without sagging.</p></article></div></div></section>
+  <section className="mdl-about-promise-sec"><div className="mdl-about-promise-wrap"><h2>Our Uncompromised Quality Guarantee</h2><p>We refuse to cut corners by mixing polyurethane foam fillers or cheap chemical synthetics into our core mixtures. Every product bearing the MD Latex mark represents our ongoing dedication to certified sleep safety, raw botanical honesty, and deep, restorative orthopedic recovery for your family.</p></div></section>
+ </main>;
+}
