@@ -1,7 +1,42 @@
 "use client";
 import Link from "next/link";import {useRef,useState} from "react";
 const logoUrl="/images/md_latex_logo.webp";
-export function Header(){const[open,setOpen]=useState(false);const[sub,setSub]=useState(false);return <><div className="trust">✦ ✦ ✦ ✦ ✦ <b>Trusted by 100,000+</b></div><header><Link className="brand-logo" href="/"><img src={logoUrl} alt="MD Latex — 100% Natural Latex Foam"/></Link><nav><Link href="/">Home</Link><span className="shop">Shop All <i>⌄</i><div><Link href="/collections/all">Shop All</Link><Link href="/collections/mattresses">Mattresses</Link><Link href="/collections/pillows">Pillows</Link><Link href="/collections/baby-kids">Baby &amp; Kids</Link></div></span><Link href="/pages/about-us">About Us</Link><Link href="/pages/contact">Contact</Link></nav><div className="actions"><button aria-label="Search">⌕</button><button aria-label="Account">♙</button><button aria-label="Cart">▢<sup>0</sup></button><button className="menu" onClick={()=>{setOpen(true);setSub(false)}} aria-label="Open menu">☰</button></div></header>{open&&<><button className="drawer-shade" onClick={()=>setOpen(false)} aria-label="Close menu backdrop"/><aside className="mobile-drawer"><div className="drawer-head"><button onClick={()=>sub?setSub(false):setOpen(false)} aria-label={sub?'Back to menu':'Close menu'}>{sub?'←':'×'}</button><Link href="/" onClick={()=>setOpen(false)}><img src={logoUrl} alt="MD Latex — 100% Natural Latex Foam"/></Link><div><button aria-label="Search">⌕</button><button aria-label="Cart">♧</button></div></div>{sub?<div className="drawer-sub"><button onClick={()=>setSub(false)}>← <span>Shop All</span></button><Link href="/collections/mattresses">Mattresses</Link><Link href="/collections/pillows">Pillows</Link><Link href="/collections/baby-kids">Baby &amp; Kids</Link></div>:<div className="drawer-links"><Link className="active" href="/" onClick={()=>setOpen(false)}>Home</Link><button onClick={()=>setSub(true)}><span>Shop All</span><b>→</b></button><Link href="/pages/about-us">About Us</Link><Link href="/pages/contact">Contact</Link></div>}</aside></>}</>}
+export function Header(){
+  const[open,setOpen]=useState(false);
+  const[sub,setSub]=useState(false);
+  const[shopOpen,setShopOpen]=useState(false);
+  const closeNavigation=()=>{setOpen(false);setSub(false);setShopOpen(false)};
+  return <>
+    <div className="trust">✦ ✦ ✦ ✦ ✦ <b>Trusted by 100,000+</b></div>
+    <header>
+      <Link className="brand-logo" href="/" onClick={closeNavigation}><img src={logoUrl} alt="MD Latex — 100% Natural Latex Foam"/></Link>
+      <nav className="site-nav">
+        <Link href="/" onClick={closeNavigation}>Home</Link>
+        <div className={`shop ${shopOpen?"is-open":""}`} onMouseEnter={()=>setShopOpen(true)} onMouseLeave={()=>setShopOpen(false)}>
+          <button type="button" className="shop-trigger" onClick={()=>setShopOpen(value=>!value)} aria-expanded={shopOpen}>Shop All <span aria-hidden="true">↓</span></button>
+          <div className="shop-dropdown">
+            <Link href="/collections/all" onClick={closeNavigation}>Shop All</Link>
+            <Link href="/collections/mattresses" onClick={closeNavigation}>Mattresses</Link>
+            <Link href="/collections/pillows" onClick={closeNavigation}>Pillows</Link>
+            <Link href="/collections/baby-kids" onClick={closeNavigation}>Baby &amp; Kids</Link>
+          </div>
+        </div>
+        <Link href="/pages/about-us" onClick={closeNavigation}>About Us</Link>
+        <Link href="/pages/contact" onClick={closeNavigation}>Contact</Link>
+      </nav>
+      <div className="actions">
+        <button type="button" aria-label="Search">⌕</button>
+        <button type="button" aria-label="Account">♙</button>
+        <button type="button" className="cart-button" aria-label="Cart"><span className="nav-cart-icon" aria-hidden="true"/><sup>0</sup></button>
+        <button type="button" className="menu" onClick={()=>{setOpen(true);setSub(false);setShopOpen(false)}} aria-label="Open menu">☰</button>
+      </div>
+    </header>
+    {open&&<><button className="drawer-shade" onClick={closeNavigation} aria-label="Close menu backdrop"/><aside className="mobile-drawer">
+      <div className="drawer-head"><button type="button" onClick={()=>sub?setSub(false):closeNavigation()} aria-label={sub?'Back to menu':'Close menu'}>{sub?'←':'×'}</button><Link href="/" onClick={closeNavigation}><img src={logoUrl} alt="MD Latex — 100% Natural Latex Foam"/></Link><div><button type="button" aria-label="Search">⌕</button><button type="button" className="cart-button" aria-label="Cart"><span className="nav-cart-icon" aria-hidden="true"/></button></div></div>
+      {sub?<div className="drawer-sub"><button type="button" onClick={()=>setSub(false)}>← <span>Shop All</span></button><Link href="/collections/all" onClick={closeNavigation}>Shop All</Link><Link href="/collections/mattresses" onClick={closeNavigation}>Mattresses</Link><Link href="/collections/pillows" onClick={closeNavigation}>Pillows</Link><Link href="/collections/baby-kids" onClick={closeNavigation}>Baby &amp; Kids</Link></div>:<div className="drawer-links"><Link className="active" href="/" onClick={closeNavigation}>Home</Link><button type="button" onClick={()=>setSub(true)}><span>Shop All</span><b aria-hidden="true">↓</b></button><Link href="/pages/about-us" onClick={closeNavigation}>About Us</Link><Link href="/pages/contact" onClick={closeNavigation}>Contact</Link></div>}
+    </aside></>}
+  </>;
+}
 export function Footer(){return <footer className="footer"><div className="footer-inner"><div><h3>Support Links</h3><Link href="/pages/about-us">About Us</Link><Link href="/pages/contact">Contact Us</Link></div><div className="footer-brand"><Link className="footer-logo" href="/"><img src={logoUrl} alt="MD Latex — 100% Natural Latex Foam"/></Link><h3>Malaysia&apos;s Trusted Latex Brand</h3><p>Crafting premium natural latex products for better sleep, since day one.</p></div></div><div className="copyright">© 2026, MD Latex <span>Privacy policy</span></div></footer>}
 export function ContactForm({title="Send Us A Message"}:{title?:string}){return <section className="form-wrap"><h2>{title}</h2><p>Fill in the form and our team will get back to you as soon as possible.</p><form onSubmit={e=>e.preventDefault()}><div><input aria-label="Name" placeholder="Name"/><input aria-label="Email" type="email" placeholder="Email *"/></div><input aria-label="Phone number" placeholder="Phone number"/><textarea aria-label="Comment" placeholder="Comment" rows={6}/><button className="button">Send</button></form></section>}
 const faqs=[['Do you accept custom sizes and shapes?','Yes, we specialise in custom sizes and shapes to suit your specific needs. Whether it’s a non-standard mattress dimension or a tailored pillow shape, simply share your specifications with our team and we’ll prepare a quotation and lead time for you.'],['Can I request for product details or samples?','Of course. We’re happy to share full product specifications, certifications, and material details. Samples are available upon request for serious enquiries.'],['Do you supply in bulk or accept OEM orders?','Yes, we work with retailers, distributors, hotels, and private label partners worldwide. We accept bulk orders and offer full OEM services.'],['Where are your products made?','All our products are proudly manufactured in Malaysia at our HQ in Batu Caves, Selangor.'],['How long does it take to get a response?','We aim to reply to all enquiries within 24 hours on business days (Mon – Fri).']];

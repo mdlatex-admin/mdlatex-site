@@ -4,6 +4,15 @@ import {useRef, useState} from "react";
 
 const sizes = ["Single (100 x 200 cm)", "Queen (150 x 200 cm)", "King (180 x 200 cm)", "Super King (200 x 200 cm)"];
 const thicknesses = ["5 cm", "7.5 cm", "10 cm", "15 cm"];
+const gallery = [
+  {src: "/images/md_latex_natural_latex_mattress_productpicture1_hero.webp", alt: "MD Latex 100% natural latex mattress product overview"},
+  {src: "/images/md_latex_natural_latex_mattress_productpicture2_malaysian_natural_latex_benefits.webp", alt: "Premium Malaysian natural latex mattress benefits"},
+  {src: "/images/md_latex_natural_latex_mattress_productpicture3_spinal_support.webp", alt: "Natural latex mattress supporting proper spinal alignment"},
+  {src: "/images/md_latex_natural_latex_mattress_productpicture4_sleeping_positions.webp", alt: "Natural latex mattress support for every sleeping position"},
+  {src: "/images/md_latex_natural_latex_mattress_productpicture5_mattress_benefits.webp", alt: "MD Latex natural mattress cooling and hygiene benefits"},
+  {src: "/images/md_latex_natural_latex_mattress_productpicture6_chiropractor_recommended.webp", alt: "Chiropractor recommendation for MD Latex natural mattress"},
+  {src: "/images/md_latex_natural_latex_mattress_productpicture7_comparison.webp", alt: "MD Latex mattress compared with other mattresses"}
+];
 const faqs = [
   ["Is natural latex better than memory foam?", "Natural latex provides more responsive support, better airflow, and longer-lasting durability compared to traditional memory foam. Unlike memory foam, latex does not trap as much heat and naturally maintains its shape over time, helping reduce sagging and body impressions."],
   ["How long does a latex mattress last?", "A high-quality natural latex mattress can last 10–20 years with proper care. Latex is known for its resilience and ability to maintain consistent support over time, making it one of the most durable mattress materials available."],
@@ -23,14 +32,21 @@ function PerkIcon({type}: {type: "truck" | "returns" | "lock"}) {
 }
 
 export default function MattressProductInfo() {
+  const [current, setCurrent] = useState(0);
   const [review, setReview] = useState(0);
+  const galleryTouchStart = useRef(0);
   const touchStart = useRef(0);
   const move = (direction: number) => setReview(value => (value + direction + reviews.length) % reviews.length);
+  const swipeGallery = (end: number) => {
+    const delta = end - galleryTouchStart.current;
+    if (Math.abs(delta) > 45) setCurrent(value => (value + (delta < 0 ? 1 : -1) + gallery.length) % gallery.length);
+  };
 
   return <section className="hp-product-shell mattress-product-shell">
     <div className="hp-gallery mattress-gallery">
-      <div className="hp-mobile-photo"><img src="/images/md_latex_natural_latex_mattress_productpicture1.webp" alt="100% Natural Latex Mattress"/></div>
-      <div className="hp-gallery-collage"><div className="mattress-gallery-image"><img src="/images/md_latex_natural_latex_mattress_productpicture1.webp" alt="100% Natural Latex Mattress product view"/></div></div>
+      <div className="hp-mobile-photo" onTouchStart={event => galleryTouchStart.current = event.touches[0].clientX} onTouchEnd={event => swipeGallery(event.changedTouches[0].clientX)}><img src={gallery[current].src} alt={gallery[current].alt}/></div>
+      <div className="hp-gallery-collage">{gallery.map((image, index) => <button type="button" key={image.src} className={index === current ? "is-current" : ""} onClick={() => setCurrent(index)} aria-label={`View mattress image ${index + 1}`}><img src={image.src} alt={image.alt}/></button>)}</div>
+      <div className="hp-gallery-dots" aria-label="Choose mattress product image">{gallery.map((image, index) => <button type="button" key={image.src} className={index === current ? "is-current" : ""} onClick={() => setCurrent(index)} aria-label={`Mattress image ${index + 1}`}/>)}</div>
     </div>
     <div className="hp-product-copy">
       <p className="hp-made-in">Made in Malaysia</p>
@@ -52,7 +68,7 @@ export default function MattressProductInfo() {
         <div><i><PerkIcon type="returns"/></i><span><b>Easy Returns</b><small>30-day return policy</small></span></div>
         <div><i><PerkIcon type="lock"/></i><span><b>Secure Payment</b><small>100% secure checkout</small></span></div>
       </div>
-      <div className="hp-faqs mattress-faqs">{faqs.map(([question, answer]) => <details open key={question}><summary><i>✓</i>{question}<span>⌃</span></summary><div className="hp-faq-answer"><p>{answer}</p></div></details>)}</div>
+      <div className="hp-faqs mattress-faqs">{faqs.map(([question, answer]) => <details key={question}><summary><i>✓</i>{question}<span>⌃</span></summary><div className="hp-faq-answer"><p>{answer}</p></div></details>)}</div>
       <section className="hp-testimonials hp-testimonials-inline" aria-label="Customer testimonials" onTouchStart={event => touchStart.current = event.touches[0].clientX} onTouchEnd={event => {if (Math.abs(event.changedTouches[0].clientX - touchStart.current) > 40) move(event.changedTouches[0].clientX < touchStart.current ? 1 : -1)}}>
         <blockquote><div className="hp-testimonial-heading"><h3>{reviews[review].title}</h3><span><button type="button" onClick={() => move(-1)} aria-label="Previous testimonial">‹</button><button type="button" onClick={() => move(1)} aria-label="Next testimonial">›</button></span></div><p>{reviews[review].body}</p><footer>★★★★★</footer></blockquote>
       </section>

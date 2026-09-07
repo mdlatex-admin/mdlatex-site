@@ -96,8 +96,14 @@
 }
 
 /* Natural latex mattress product and body flow */
+.mattress-product-shell{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:32px}
 .mattress-gallery-image{width:100%;aspect-ratio:1/1;overflow:hidden;background:#f4f4f2;border-radius:4px}
 .mattress-gallery-image img{width:100%;height:100%;object-fit:cover}
+.mattress-gallery .hp-gallery-collage button,
+.mattress-gallery .hp-gallery-collage button.is-current{background:transparent;outline:0;box-shadow:none;border-radius:0}
+.mattress-gallery .hp-gallery-collage img{width:100%;height:100%;display:block;border:0;outline:0;box-shadow:none}
+.mattress-gallery .hp-mobile-photo{background:transparent;border:0;border-radius:0;outline:0;box-shadow:none}
+.mattress-gallery .hp-mobile-photo img{width:100%;display:block;border:0;outline:0;box-shadow:none}
 .mattress-selectors{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 22px}
 .mattress-selectors label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#111}
 .mattress-selectors select{width:100%;min-height:48px;padding:0 42px 0 14px;border:1px solid #222;border-radius:0;background:#fff;color:#111;font:inherit;font-weight:500;cursor:pointer}
@@ -137,6 +143,7 @@
 }
 
 @media(max-width:749px){
+  .mattress-product-shell{display:block}
   .mattress-gallery .hp-mobile-photo{aspect-ratio:4/3}
   .mattress-gallery .hp-mobile-photo img{object-fit:contain}
   .mattress-selectors{grid-template-columns:1fr;gap:12px;margin-bottom:24px}
@@ -156,4 +163,79 @@
   .mattress-sleepers-grid p{font-size:13px}
   .mattress-matrix{padding:38px 20px}
   .mattress-matrix-copy h2{font-size:28px}
+}
+
+/* Doll Pillow product page — scoped so other Baby & Kids products remain unchanged */
+.doll-product-shell{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px}
+.doll-gallery .hp-gallery-collage{grid-template-columns:1fr}
+.doll-gallery.has-many .hp-gallery-collage{grid-template-columns:repeat(2,1fr)}
+.doll-gallery .hp-gallery-collage button{aspect-ratio:auto;background:transparent;outline:0!important}
+.doll-gallery.has-one .hp-gallery-collage button{cursor:default}
+.doll-gallery .hp-gallery-collage img{width:100%;height:auto;object-fit:contain;border:0;box-shadow:none}
+.doll-gallery .hp-mobile-photo{background:transparent;border:0;border-radius:0}
+.doll-gallery .hp-mobile-photo img{object-fit:contain}
+.doll-add-to-cart{width:100%;margin:18px 0 28px;padding:17px 24px;border:0;background:#000;color:#fff;font-size:18px;text-transform:uppercase;cursor:pointer}
+.doll-trusted-section{margin-top:0}
+.doll-tabs{margin-top:0}
+.doll-tabs .mdl-tabs-content{min-height:420px}
+.doll-tabs .mdl-tab-image{height:400px;aspect-ratio:auto}
+.doll-tabs .mdl-tab-image img{object-position:center bottom}
+.doll-comparison{background:#f7f8fb}
+.doll-features{padding-top:28px;padding-bottom:28px}
+.doll-features .hp-features-grid i{border:1.5px solid currentColor;border-radius:50%;font-size:26px}
+.doll-stages{padding:54px 16px;background:#fafbfa;overflow:hidden}
+.doll-stages-wrap{max-width:1280px;margin:0 auto}
+.doll-stages-header{text-align:center;max-width:720px;margin:0 auto 34px}
+.doll-stages-header h2,.doll-split h2,.doll-pillars h2{font-size:36px;line-height:1.15;letter-spacing:-1px;color:#1a3a28;margin:0 0 14px}
+.doll-stages-header p,.doll-split p{font-size:15.5px;line-height:1.65;color:#555;margin:0}
+.doll-stages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.doll-stages-grid article{background:#fff;border:1px solid #eef2ef;border-radius:18px;padding:22px;text-align:center;box-shadow:0 4px 15px #00000008;transition:transform .35s cubic-bezier(.25,1,.5,1),box-shadow .35s}
+.doll-stages-grid article:hover{transform:translateY(-6px);box-shadow:0 14px 30px #00000012}
+.doll-stages-grid article>div{aspect-ratio:1;border-radius:12px;overflow:hidden;background:#f4f6f5;margin-bottom:20px}
+.doll-stages-grid img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,1,.5,1)}
+.doll-stages-grid article:hover img{transform:scale(1.04)}
+.doll-stages-grid h3{font-size:20px;color:#1a3a28;margin:0 0 10px}
+.doll-stages-grid p{font-size:14px;line-height:1.6;color:#555;margin:0}
+.doll-split{padding:54px 16px;background:#fff}
+.doll-split-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.doll-split p{margin:0 0 16px}
+.doll-split figure,.doll-pillars figure{margin:0;border-radius:18px;overflow:hidden;border:1px solid #eef2ef;box-shadow:0 10px 30px #0000000d}
+.doll-split figure img,.doll-pillars figure img{width:100%;height:auto;display:block;transition:transform .7s cubic-bezier(.25,1,.5,1)}
+.doll-split figure:hover img,.doll-pillars figure:hover img{transform:scale(1.03)}
+.doll-pillars{padding:54px 16px;background:linear-gradient(135deg,#1a3a28 0%,#2d5f42 50%,#1a3a28 100%);color:#fff}
+.doll-pillars-wrap{max-width:1100px;margin:0 auto;text-align:center}
+.doll-pillars h2{color:#fff;margin-bottom:34px}
+.doll-pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:38px}
+.doll-pillars-grid article{text-align:left;padding:30px 24px;background:#ffffff0a;border:1px solid #ffffff1a;border-radius:18px;transition:transform .3s,background .3s}
+.doll-pillars-grid article:hover{transform:translateY(-5px);background:#ffffff12}
+.doll-pillars-grid i{display:block;font-style:normal;font-size:30px;color:#8bc4a3;margin-bottom:16px}
+.doll-pillars-grid h3{font-size:18px;color:#fff;margin:0 0 10px}
+.doll-pillars-grid p{font-size:14px;line-height:1.6;color:#ffffffcc;margin:0}
+.doll-pillars figure{border-color:#ffffff12;box-shadow:0 15px 40px #0004}
+
+@media(max-width:989px){
+  .doll-split-wrap{grid-template-columns:1fr;gap:30px}
+  .doll-stages-header h2,.doll-split h2,.doll-pillars h2{font-size:30px}
+}
+
+@media(max-width:749px){
+  .doll-product-shell{display:block;padding-left:20px;padding-right:20px}
+  .doll-gallery .hp-mobile-photo{aspect-ratio:1}
+  .doll-add-to-cart{margin-top:16px}
+  .doll-trusted-section{padding:34px 20px 38px}
+  .doll-tabs{padding-left:20px;padding-right:20px}
+  .doll-tabs .mdl-tabs-content{min-height:auto}
+  .doll-tabs .mdl-tab-image{height:240px}
+  .doll-comparison{padding-left:20px;padding-right:20px}
+  .doll-stages{padding:38px 0}
+  .doll-stages-header{padding:0 20px;margin-bottom:24px}
+  .doll-stages-grid{display:flex;overflow-x:auto;gap:14px;padding:4px 20px 18px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .doll-stages-grid::-webkit-scrollbar{display:none}
+  .doll-stages-grid article{flex:0 0 85%;scroll-snap-align:center;padding:20px}
+  .doll-split{padding:40px 20px}
+  .doll-split-reverse figure{order:1}.doll-split-reverse .doll-split-wrap>div{order:2}
+  .doll-pillars{padding:40px 20px}
+  .doll-pillars-grid{grid-template-columns:1fr;gap:14px;margin-bottom:28px}
+  .doll-pillars-grid article{padding:24px 20px}
+  .doll-stages-header h2,.doll-split h2,.doll-pillars h2{font-size:27px}
 }

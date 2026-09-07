@@ -7,6 +7,10 @@ import HighPillowDetails from "./high-pillow-details";
 import HighPillowProductInfo from "./high-pillow-product-info";
 import MattressDetails from "./mattress-details";
 import MattressProductInfo from "./mattress-product-info";
+import DollPillowDetails from "./doll-pillow-details";
+import DollPillowProductInfo from "./doll-pillow-product-info";
+import BolsterDetails from "./bolster-details";
+import BolsterProductInfo from "./bolster-product-info";
 
 export async function generateMetadata({params}: {params: Promise<{handle: string}>}): Promise<Metadata> {
   const {handle} = await params;
@@ -20,7 +24,9 @@ export default async function ProductPage({params}: {params: Promise<{handle: st
 
   const usesPremiumPillowTemplate = ["high-pillow", "height-pillow", "shoulder-pillow"].includes(product.handle);
   const usesMattressTemplate = product.handle === "100-natural-latex-mattress";
-  const usesPremiumTemplate = usesPremiumPillowTemplate || usesMattressTemplate;
+  const usesBabyKidsTemplate = ["doll-pillow-pdoll", "kid-pillow-pkid", "baby-mattress-set"].includes(product.handle);
+  const usesBolsterTemplate = product.handle === "bolster-pb";
+  const usesPremiumTemplate = usesPremiumPillowTemplate || usesMattressTemplate || usesBabyKidsTemplate || usesBolsterTemplate;
 
   return <>
     <Header />
@@ -32,6 +38,8 @@ export default async function ProductPage({params}: {params: Promise<{handle: st
 
       {usesPremiumPillowTemplate && <HighPillowProductInfo product={product.handle as "high-pillow" | "height-pillow" | "shoulder-pillow"} />}
       {usesMattressTemplate && <MattressProductInfo />}
+      {usesBabyKidsTemplate && <DollPillowProductInfo product={product.handle as "doll-pillow-pdoll" | "kid-pillow-pkid" | "baby-mattress-set"} />}
+      {usesBolsterTemplate && <BolsterProductInfo />}
       {!usesPremiumTemplate && <section className="basic-product-grid">
         <div className="basic-product-media"><img src={product.image} alt={product.title} /></div>
         <div className="basic-product-info">
@@ -48,7 +56,8 @@ export default async function ProductPage({params}: {params: Promise<{handle: st
 
       {usesPremiumPillowTemplate && <HighPillowDetails product={product.handle as "high-pillow" | "height-pillow" | "shoulder-pillow"} />}
       {usesMattressTemplate && <MattressDetails />}
-      {product.template === "baby-kids" && <section className="shared-template-note"><p>Baby &amp; Kids Collection</p><h2>Pure botanical comfort for growing bodies</h2><p>This shared Baby &amp; Kids template adapts to each product&apos;s own imagery and details.</p></section>}
+      {usesBabyKidsTemplate && <DollPillowDetails />}
+      {usesBolsterTemplate && <BolsterDetails />}
     </main>
     <Footer />
   </>;

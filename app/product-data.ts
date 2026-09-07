@@ -1,6 +1,6 @@
 export type Product={handle:string;title:string;collection:"mattresses"|"pillows"|"baby-kids";image:string;price:number;available:boolean;pillowType?:string;template:"mattress"|"pillow"|"baby-kids"};
 export const products:Product[]=[
-{handle:"100-natural-latex-mattress",title:"100% Natural Latex Mattress",collection:"mattresses",image:"/images/md_latex_natural_latex_mattress_productpicture1.webp",price:0,available:true,template:"mattress"},
+{handle:"100-natural-latex-mattress",title:"100% Natural Latex Mattress",collection:"mattresses",image:"/images/md_latex_natural_latex_mattress_productpicture1_hero.webp",price:0,available:true,template:"mattress"},
 {handle:"baby-mattress-set",title:"Baby Mattress Set",collection:"baby-kids",image:"/images/md_latex_baby_mattress_set_productpicture1.webp",price:0,available:true,template:"baby-kids"},
 {handle:"bolster-pb",title:"Bolster",collection:"pillows",image:"/images/md_latex_bolster_productpicture1.webp",price:0,available:true,pillowType:"Bolster",template:"pillow"},
 {handle:"doll-pillow-pdoll",title:"Doll Pillow (pdoll)",collection:"baby-kids",image:"/images/md_latex_doll_pillow_productpicture1.webp",price:0,available:true,pillowType:"Kids",template:"baby-kids"},
