@@ -14,6 +14,8 @@ const testimonials=[
   {title:"Stays Amazingly Cool",body:"Living in Malaysia, regular pillows always turn into hot sponges by midnight. This latex one stays incredibly breezy. No sweat, no constant pillow-flipping. Absolutely worth every cent."}
 ];
 
+const gallery=Array.from({length:5},(_,index)=>`/images/md_latex_bolster_productpicture${index+1}.webp`);
+
 function PerkIcon({type}:{type:"truck"|"returns"|"lock"}){
   const common={viewBox:"0 0 32 32",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round" as const,strokeLinejoin:"round" as const,"aria-hidden":true};
   if(type==="truck")return <svg {...common}><path d="M3 8h16v14H3zM19 13h5l5 5v4H19z"/><circle cx="9" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/><path d="M19 18h10"/></svg>;
@@ -22,10 +24,10 @@ function PerkIcon({type}:{type:"truck"|"returns"|"lock"}){
 }
 
 export default function BolsterProductInfo(){
-  const [testimonial,setTestimonial]=useState(0);const touchX=useRef(0);
+  const [current,setCurrent]=useState(0);const [testimonial,setTestimonial]=useState(0);const galleryTouchX=useRef(0);const touchX=useRef(0);
   const move=(amount:number)=>setTestimonial(value=>(value+amount+testimonials.length)%testimonials.length);
   return <section className="hp-product-shell">
-    <div className="hp-gallery"><div className="hp-mobile-photo"><img src="/images/md_latex_bolster_productpicture1.webp" alt="MD Latex natural latex bolster"/></div><div className="hp-gallery-collage"><button type="button" className="is-current"><img src="/images/md_latex_bolster_productpicture1.webp" alt="MD Latex natural latex bolster product view"/></button></div><div className="hp-gallery-dots"><button type="button" className="is-current" aria-label="Bolster image 1"/></div></div>
+    <div className="hp-gallery"><div className="hp-mobile-photo" onTouchStart={event=>galleryTouchX.current=event.touches[0].clientX} onTouchEnd={event=>{const delta=event.changedTouches[0].clientX-galleryTouchX.current;if(Math.abs(delta)>45)setCurrent(value=>(value+(delta<0?1:-1)+gallery.length)%gallery.length)}}><img src={gallery[current]} alt={`MD Latex natural latex bolster view ${current+1}`}/></div><div className="hp-gallery-collage">{gallery.map((image,index)=><button type="button" key={image} className={index===current?"is-current":""} onClick={()=>setCurrent(index)} aria-label={`View Bolster image ${index+1}`}><img src={image} alt={`MD Latex Bolster product view ${index+1}`}/></button>)}</div><div className="hp-gallery-dots">{gallery.map((_,index)=><button type="button" key={index} className={index===current?"is-current":""} onClick={()=>setCurrent(index)} aria-label={`Bolster image ${index+1}`}/>)}</div></div>
     <div className="hp-product-copy">
       <p className="hp-made-in">Made in Malaysia</p><p className="hp-product-rating"><span>★★★★</span><span className="hp-half-star">★</span> 4.8 From 1367 Reviews</p><h1>Bolster</h1><p className="hp-product-description">Experience the perfect balance of comfort, support, and durability with our 100% natural latex bolster.</p>
       <ul className="hp-product-benefits"><li><i>✓</i><span><b>100% Natural Latex</b><small>Eco-friendly &amp; Sustainable</small></span></li><li><i>✓</i><span><b>Pressure Relief</b><small>Reduces pressure points and improves sleep</small></span></li><li><i>✓</i><span><b>Breathable &amp; Cool</b><small>Open-cell structure for better airflow</small></span></li><li><i>✓</i><span><b>Durable &amp; Long Lasting</b><small>Built to last 20 years</small></span></li></ul>
