@@ -94,3 +94,66 @@
   .mdl-sleepers-grid{padding-left:20px;padding-right:20px}
   .mdl-pillow-matrix{padding-left:20px;padding-right:20px}
 }
+
+/* Natural latex mattress product and body flow */
+.mattress-gallery-image{width:100%;aspect-ratio:1/1;overflow:hidden;background:#f4f4f2;border-radius:4px}
+.mattress-gallery-image img{width:100%;height:100%;object-fit:cover}
+.mattress-selectors{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 22px}
+.mattress-selectors label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#111}
+.mattress-selectors select{width:100%;min-height:48px;padding:0 42px 0 14px;border:1px solid #222;border-radius:0;background:#fff;color:#111;font:inherit;font-weight:500;cursor:pointer}
+.mattress-faqs .hp-faq-answer p{color:#111}
+.mattress-trusted-section{margin-top:0}
+.mattress-tabs{margin-top:0}
+.mattress-comparison{background:#f7f8fb}
+.mattress-features{padding-top:28px;padding-bottom:28px}
+.mattress-features .hp-features-card{background:#f3f5f3}
+.mattress-features .hp-features-grid article{transition:transform .25s ease}
+.mattress-features .hp-features-grid article:hover{transform:translateY(-3px)}
+.mattress-features .hp-features-grid i{border:1.5px solid currentColor;border-radius:50%;font-size:26px;font-weight:500}
+.mattress-sleepers{width:100%;padding:32px 16px 46px;background:#fff}
+.mattress-sleepers-wrap{max-width:1280px;margin:0 auto}
+.mattress-sleepers-header{text-align:center;margin-bottom:18px}
+.mattress-sleepers-header h2{font-size:30px;line-height:1.15;letter-spacing:-.8px;color:#000;margin:0 0 8px}
+.mattress-sleepers-header p{font-size:15px;line-height:1.55;color:#000;max-width:720px;margin:0 auto}
+.mattress-sleepers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mattress-sleepers-grid article{background:#fff;border:1px solid #e4e8e5;border-radius:14px;padding:24px 18px;text-align:center;transition:transform .25s ease,box-shadow .25s ease}
+.mattress-sleepers-grid article:hover{transform:translateY(-3px);box-shadow:0 6px 20px #0000000f}
+.mattress-sleepers-grid img{width:100%;max-width:220px;height:110px;margin:0 auto 18px;display:block;object-fit:contain}
+.mattress-sleepers-grid h3{font-size:17px;color:#000;margin:0 0 10px}
+.mattress-sleepers-grid p{font-size:14px;line-height:1.6;color:#000;margin:0}
+.mattress-matrix{width:100%;padding:52px 16px;background:#fafbfa}
+.mattress-matrix-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.mattress-matrix-copy h2{font-size:40px;font-weight:700;color:#1a3a28;margin:0 0 16px;letter-spacing:-1px;line-height:1.15}
+.mattress-matrix-copy>p{font-size:16px;line-height:1.65;color:#4a4a4a;margin:0 0 30px}
+.mattress-matrix-copy>div{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;color:#1a3a28}
+.mattress-matrix-copy>div>span{color:#53af01;font-weight:700}
+.mattress-matrix-copy>div p{font-size:15px;line-height:1.5;margin:0}
+.mattress-matrix-image{width:100%;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px #0000000f;border:1px solid #eef2ef;background:#fff}
+.mattress-matrix-image img{width:100%;height:auto;display:block}
+
+@media(max-width:989px){
+  .mattress-matrix-wrap{grid-template-columns:1fr;gap:32px}
+  .mattress-matrix-copy h2{font-size:30px}
+}
+
+@media(max-width:749px){
+  .mattress-gallery .hp-mobile-photo{aspect-ratio:4/3}
+  .mattress-gallery .hp-mobile-photo img{object-fit:contain}
+  .mattress-selectors{grid-template-columns:1fr;gap:12px;margin-bottom:24px}
+  .mattress-selectors select{min-height:50px}
+  .mattress-trusted-section{padding-left:20px;padding-right:20px}
+  .mattress-tabs{padding-left:20px;padding-right:20px}
+  .mattress-comparison{padding-left:20px;padding-right:20px}
+  .mattress-sleepers{padding:24px 0 34px}
+  .mattress-sleepers-header{padding:0 20px;margin-bottom:14px}
+  .mattress-sleepers-header h2{font-size:24px}
+  .mattress-sleepers-header p{font-size:13.5px}
+  .mattress-sleepers-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 20px 16px;scrollbar-width:none}
+  .mattress-sleepers-grid::-webkit-scrollbar{display:none}
+  .mattress-sleepers-grid article{flex:0 0 88%;scroll-snap-align:center;padding:22px 18px}
+  .mattress-sleepers-grid img{max-width:200px;height:100px;margin-bottom:14px}
+  .mattress-sleepers-grid h3{font-size:16px}
+  .mattress-sleepers-grid p{font-size:13px}
+  .mattress-matrix{padding:38px 20px}
+  .mattress-matrix-copy h2{font-size:28px}
+}

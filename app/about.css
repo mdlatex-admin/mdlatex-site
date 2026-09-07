@@ -9,3 +9,34 @@
 @media(max-width:749px){.mdl-about-hero-unified{height:80vh;min-height:480px}.mdl-about-overlay{padding:0 16px}.mdl-about-hero-content h1{font-size:38px}.mdl-about-hero-content p{font-size:16px}.mdl-about-journey-sec{padding:60px 16px}.mdl-journey-header{margin-bottom:40px}.mdl-journey-header h2{font-size:32px}.mdl-journey-row-block,.mdl-journey-row-block.flipped{display:flex;flex-direction:column;gap:24px;margin-bottom:50px}.mdl-journey-desc-side{order:1!important}.mdl-journey-img-side{order:2!important}.mdl-about-pillars-sec{padding:50px 16px}.mdl-about-pillars-box{padding:40px 20px;border-radius:16px}.mdl-about-pillars-box>h2{font-size:26px}.mdl-about-promise-sec{padding:40px 16px}.mdl-about-promise-sec h2{font-size:22px}}
 @media(max-width:479px){.mdl-about-stats-sec{padding:40px 16px}.mdl-about-stats-wrap{grid-template-columns:1fr;gap:12px}.mdl-stat-metric-card{padding:30px 16px}}
 @media(prefers-reduced-motion:reduce){.mdl-about-page *{animation-duration:.01ms!important;animation-delay:0ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+.mdl-about-journey-sec{margin-top:-1px;border-top:0}
+
+/* Cohesive vertical rhythm across the About page */
+.mdl-about-stats-sec{padding-top:48px;padding-bottom:48px}
+.mdl-stat-metric-card{padding:30px 16px}
+.mdl-stat-number{font-size:38px;margin-bottom:9px}
+.mdl-stat-label{font-size:13px;margin-bottom:6px}
+.mdl-stat-subtext{font-size:12.5px;line-height:1.45}
+.mdl-awards-grid-sec{padding-top:52px;padding-bottom:56px}
+.mdl-about-split-sec,.mdl-about-split-rev-sec{padding-top:44px;padding-bottom:44px}
+.mdl-about-journey-sec{padding-top:60px;padding-bottom:60px}
+.mdl-journey-header{margin-bottom:44px}
+.mdl-journey-row-block{margin-bottom:54px}
+.mdl-hz-timeline-sec{padding-top:56px;padding-bottom:56px}
+.mdl-about-pillars-sec{padding-top:56px;padding-bottom:56px}
+.mdl-about-promise-sec{padding-top:30px;padding-bottom:44px}
+.mdl-about-promise-wrap{padding-top:38px}
+
+@media(max-width:749px){
+ .mdl-about-stats-sec,.mdl-awards-grid-sec,.mdl-about-split-sec,.mdl-about-split-rev-sec,.mdl-hz-timeline-sec{padding-top:36px;padding-bottom:36px}
+ .mdl-about-journey-sec{padding-top:44px;padding-bottom:44px}
+ .mdl-journey-header{margin-bottom:32px}
+ .mdl-journey-row-block,.mdl-journey-row-block.flipped{margin-bottom:40px}
+ .mdl-about-pillars-sec{padding-top:40px;padding-bottom:40px}
+ .mdl-about-promise-sec{padding-top:24px;padding-bottom:36px}
+ .mdl-about-promise-wrap{padding-top:28px}
+ .mdl-stat-metric-card{padding:24px 14px}
+ .mdl-stat-number{font-size:34px}
+ .mdl-stat-label{font-size:12.5px}
+ .mdl-stat-subtext{font-size:12px}
+}
