@@ -31,7 +31,7 @@ const sleepers = [
 
 export default function MattressDetails() {
   const [active, setActive] = useState(0);
-  const trusted = useRef<HTMLElement>(null);
+  const trusted = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const node = trusted.current;

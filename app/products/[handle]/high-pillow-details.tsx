@@ -44,7 +44,7 @@ export default function HighPillowDetails({product="high-pillow"}:{product?:Pill
     image:"/images/md_latex_shoulder_pillow_mechanism_shoulder_curve.webp",
     alt:"Woman using the MD Latex Shoulder Pillow with illuminated spinal alignment"
   },...baseMechanisms.slice(1)]:baseMechanisms;
-  const [active,setActive]=useState(0);const [testimonial,setTestimonial]=useState(0);const [slideDirection,setSlideDirection]=useState<"left"|"right">("right");const trusted=useRef<HTMLElement>(null);const testimonialTouchX=useRef(0);
+  const [active,setActive]=useState(0);const [testimonial,setTestimonial]=useState(0);const [slideDirection,setSlideDirection]=useState<"left"|"right">("right");const trusted=useRef<HTMLDivElement>(null);const testimonialTouchX=useRef(0);
   const moveTestimonial=(direction:"left"|"right")=>{setSlideDirection(direction);setTestimonial(value=>(value+(direction==="right"?1:-1)+testimonials.length)%testimonials.length)};
   const swipeTestimonial=(end:number)=>{const delta=end-testimonialTouchX.current;if(Math.abs(delta)>40)moveTestimonial(delta<0?"right":"left")};
   useEffect(()=>{const node=trusted.current;if(!node)return;const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){node.classList.add("is-visible");observer.disconnect()}},{threshold:.25});observer.observe(node);return()=>observer.disconnect()},[]);

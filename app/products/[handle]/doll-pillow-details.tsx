@@ -17,7 +17,7 @@ const stages = [
 
 export default function DollPillowDetails() {
   const [active, setActive] = useState(0);
-  const trusted = useRef<HTMLElement>(null);
+  const trusted = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const node = trusted.current;
